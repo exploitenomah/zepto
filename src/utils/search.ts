@@ -17,6 +17,6 @@ export function findNonSelectedOptions(total: {[x:string]: string | number}[], s
 export function highlightMatch(fullString: string, search: string) {
   if (search.length === 0) return fullString
   if (fullString.toLowerCase().includes(search.toLowerCase()) === false) return fullString
-  const splitStr = fullString.split(search)
+  const splitStr = fullString.toLowerCase().split(search.toLowerCase())
   return splitStr.join(`<span class="text-gray-500 font-[300]">${search}</span>`)
 }

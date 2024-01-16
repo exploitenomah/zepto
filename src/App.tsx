@@ -1,7 +1,7 @@
 import React, {  } from 'react';
 import './App.css';
 import ChipInput from "./components/ChipInput";
-import { OptionItem, SelectedChipItem } from "./components/ChipListItems";
+import { UserOptionItem, UserSelectedChipItem } from "./components/UserChipListItems";
 
 function App() {
   const [options, setOptions] = React.useState([])
@@ -23,8 +23,8 @@ function App() {
     <div>
       <ChipInput
         optionsList={options}
-        OptionItemComponent={OptionItem}
-        ChipComponent={SelectedChipItem} />
+        OptionItemComponent={UserOptionItem}
+        ChipComponent={UserSelectedChipItem} />
     </div>
   )
 }
