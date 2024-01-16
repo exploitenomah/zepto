@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {  } from 'react';
 import './App.css';
+import ChipInput from "./components/ChipInput";
+import { OptionItem, ChipItem } from "./components/ChipListItems";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [options, setOptions] = React.useState([])
 
+  const fetchOptions = React.useCallback(async () => {
+    try {
+      const res = await fetch('https://dummyjson.com/users?select=firstName,lastName,email,image')
+      const data = await res.json()
+      if (Array.isArray(data.users)) setOptions(data.users)
+    } catch (err) {
+    }
+  }, [])
+
+  React.useEffect(() => {
+    fetchOptions()
+  }, [fetchOptions])
+
+  return (
+    <div>
+      <ChipInput
+        optionsList={options}
+        OptionItemComponent={OptionItem}
+        ChipComponent={ChipItem} />
+    </div>
+  )
+}
 export default App;
