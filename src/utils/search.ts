@@ -18,5 +18,5 @@ export function highlightMatch(fullString: string, search: string) {
   if (search.length === 0) return fullString
   if (fullString.toLowerCase().includes(search.toLowerCase()) === false) return fullString
   const splitStr = fullString.split(search)
-  return splitStr.join(`<span class="text-red-500">${search}</span>`)
+  return splitStr.join(`<span class="text-gray-500 font-[300]">${search}</span>`)
 }
